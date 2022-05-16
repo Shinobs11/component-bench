@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect, useRef, useImperativeHandle, CSSProperties } from "react";
+import { useState, CSSProperties } from "react";
 import "./switch.scss";
 
 interface PropTypes {
@@ -41,13 +41,24 @@ function Switch(
 
   const controlled = checked === undefined ? false : true;
 
+  const translation = () =>{
+    switch(size){
+      case "small":
+        return (controlled ? checked : toggled) ? "translateX(15px)" : "translateX(-1px)";
+      case "medium":
+        return (controlled ? checked : toggled) ? "translateX(19px)" : "translateX(-1px)";
+      case "large":
+        return (controlled ? checked : toggled) ? "translateX(24px)" : "translateX(-1px)";
+    }
+  }
+
   const styles: { [index: string]: CSSProperties } = {
     container: {
       backgroundColor: ((controlled ? checked: toggled) ? bgOn : bgOff)
     },
     switch: {
       //use checked if component is controlled, otherwise use toggled
-      transform: (controlled ? checked : toggled) ? "translateX(14px)" : "translateX(0px)",
+      transform: translation(),
       backgroundColor: buttonColor,
     },
   };
@@ -76,6 +87,7 @@ function Switch(
       onClick={_onClick}
       onBlur={_onBlur}
       onFocus={_onFocus}
+      {...props}
     >
       <div
         className={["switch", `switch--${form}`, `switch--${size}`].join(" ")}

@@ -2,26 +2,30 @@
 .button {
 font-family: 'Courier New', Courier, monospace;
 font-weight: 700;
-border: 0;
-border-radius: 3em;
+border: 1;
 cursor: pointer;
-display: inline-block;
-line-height: 1;
+}
 
+.button--box {
 
-&-small{
+}
+.button--round{
+  border-radius: 3em;
+}
+
+.button--small {
   font-size: 12px;
-  padding: 10px 16px;
+  padding: 10px 15px;
 }
 
-&-medium {
+.button--medium {
   font-size: 14px;
-  padding: 11px 20px;
+  padding: 12px 18px;
 }
 
-&-large{
+.button--large {
   font-size: 16px;
-  padding: 12px 24px;
+  padding: 14px 21px;
 }
 
-}
+
